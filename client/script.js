@@ -10,7 +10,7 @@
 */
 
 // CODE HERE
-
+const sayHelloButton = document.querySelector('#say-hello-button')
 
 // PROBLEM 2
 /*
@@ -20,7 +20,11 @@
 */
 
 // CODE HERE
-
+const mouseovercolor = () => {
+    sayHelloButton.style.backgroundColor="black"
+    sayHelloButton.style.textContent="white"
+}
+sayHelloButton.addEventListener('mouseover', mouseovercolor)
 
 // PROBLEM 3
 /*
@@ -32,7 +36,11 @@
 */
 
 // CODE HERE
-
+const mouseoveruncolor = () => {
+    sayHelloButton.style.backgroundColor="#EFEFEF"
+    sayHelloButton.style.textContent="black" 
+}
+sayHelloButton.addEventListener('mouseout', mouseoveruncolor)
 
 // PROBLEM 4
 /*
@@ -53,7 +61,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-
+sayHelloButton.addEventListener('click', sayHello)
 
 // PROBLEM 5 
 /*
@@ -67,7 +75,9 @@ const sayHello = () => {
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+    axios.get('http://localhost:3000/animals').then((res) => {
+    console.log(res.data)
+})
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -87,8 +97,19 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    //YOUR CODE HERE
+    axios.get(`http://localhost:3000/repeat/Coding`)
+    .then((res) => {
+    let data = res.data
+    let repeatMyParamTxt = document.getElementById('repeat-text')
+    repeatMyParamTxt.textContent = data
+    console.log(data)
+})
 }
+
+const repeatMyParamBtn = document.querySelector('#repeat-button')
+repeatMyParamBtn.addEventListener('click', repeatMyParam)
+
+
 
 // PROBLEM 7
 /*
@@ -111,7 +132,14 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
+const sendAQuery = () => {
+    axios.get('http://localhost:3000/query-test').then((res) => {
+    console.log(res.data)
+})
+}
 
+const sendAQueryBtn = document.querySelector('#query-button')
+sendAQueryBtn.addEventListener('click', sendAQuery)
 
 
 ////////////////
